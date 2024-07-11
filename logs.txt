@@ -1,0 +1,70 @@
+
+
+[7/7/2024, 23:22:40] [STARTING] Attempting to start the bot..
+NodeJS Version: v18.16.0
+Bot Version: 1.5.3
+
+[7/7/2024, 23:23:40] [STARTING] Attempting to start the bot..
+NodeJS Version: v18.16.0
+Bot Version: 1.5.3
+
+[7/7/2024, 23:23:41] [READY] Bot is now ready!
+
+[7/7/2024, 23:23:41] [CONFIG ERROR(S)] 
+TicketSettings.LogsChannelID is not a valid channel!
+
+[7/7/2024, 23:23:58] [SLASH COMMAND] Command: panel, User: vera.baddie#0
+
+[7/7/2024, 23:24:32] [STARTING] Attempting to start the bot..
+NodeJS Version: v18.16.0
+Bot Version: 1.5.3
+
+[7/7/2024, 23:24:33] [READY] Bot is now ready!
+
+[7/7/2024, 23:24:38] [SLASH COMMAND] Command: panel, User: vera.baddie#0
+
+[7/7/2024, 23:24:46] [TICKET CREATION] Button: TicketButton1, User: vera.baddie#0
+
+[7/7/2024, 23:25:43] [TICKET CLOSED] A ticket has been successfully closed
+
+[7/7/2024, 23:27:52] [STARTING] Attempting to start the bot..
+NodeJS Version: v18.16.0
+Bot Version: 1.5.3
+
+[7/7/2024, 23:27:53] [READY] Bot is now ready!
+
+[7/7/2024, 23:28:03] [SLASH COMMAND] Command: panel, User: vera.baddie#0
+
+[7/7/2024, 23:28:15] [TICKET CREATION] Button: TicketButton1, User: vera.baddie#0
+
+[7/7/2024, 23:28:23] [TICKET CLOSED] A ticket has been successfully closed
+
+[7/7/2024, 23:28:32] [TICKET CREATION] Button: TicketButton3, User: vera.baddie#0
+
+[7/7/2024, 23:28:38] [TICKET CLOSED] A ticket has been successfully closed
+
+[7/7/2024, 23:42:55] [STARTING] Attempting to start the bot..
+NodeJS Version: v18.16.0
+Bot Version: 1.5.3
+
+[7/7/2024, 23:42:56] [READY] Bot is now ready!
+
+[7/7/2024, 23:43:06] [SLASH COMMAND] Command: panel, User: vera.baddie#0
+
+[8/7/2024, 15:44:03] [STARTING] Attempting to start the bot..
+NodeJS Version: v18.16.0
+Bot Version: 1.5.3
+
+[8/7/2024, 15:44:04] [READY] Bot is now ready!
+
+[8/7/2024, 15:44:11] [SLASH COMMAND] Command: panel, User: vera.baddie#0
+
+[11/7/2024, 21:41:55] [STARTING] Attempting to start the bot..
+NodeJS Version: v18.16.0
+Bot Version: 1.5.3
+
+[11/7/2024, 21:41:57] [READY] Bot is now ready!
+
+[11/7/2024, 21:42:07] [TICKET CREATION] Button: TicketButton1, User: vera.baddie#0
+
+[11/7/2024, 21:42:21] [TICKET CLOSED] A ticket has been successfully closed

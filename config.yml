@@ -1,0 +1,616 @@
+﻿# ===========================================================================
+# Plex Tickets Configuration
+# If you find any issues, need support, or have a suggestion for the bot, please join our support server and create a ticket, 
+# https://discord.gg/eRaeJdTsPY
+# Documentation: https://docs.plexdevelopment.net
+# ===========================================================================
+
+# ===========================================================================
+# BOT INFORMATION
+# You must not leave them as blank!
+# ===========================================================================
+Token: "" # If you don't know how to get it, Look at our docs: https://docs.plexdevelopment.net
+BotName: "Seleçāo Service"
+GuildID: "1254021746227544094" # This is your server's ID, Right click on your server icon and copy ID
+Prefix: "t!"
+EmbedColors: "#2f3135" # Hex color!
+SlashCommands: true # Enable slash commands?
+MessageCommands: true # Enable message commands?
+LogCommands: false # If this is enabled it will log all the commands executed to the terminal
+
+# ===========================================================================
+# BOT ACTIVITY
+# ===========================================================================
+BotActivitySettings:
+  Enabled: true
+  Type: "COMPETING" # WATCHING, PLAYING, COMPETING
+  Interval: 30 # Time in seconds between status changes, It's recommended to keep it above 20-30 seconds to avoid getting ratelimited
+  Statuses: # Valid Variables: {total-tickets}, {open-tickets}, {total-messages}, {total-users}, {total-channels}, {average-rating}
+    - "{total-tickets} tickets"
+    - "{total-users} users"
+    - "{total-messages} messages"
+
+# ===========================================================================
+# TICKETS CONFIGURATION
+# ===========================================================================
+
+TicketPanelSettings: # Use the panel command to send the ticket panel to a channel!
+  PanelTitle: "Seleçāo Tickets"
+  PanelMessage: "> **Welcome to Seleçāo Service Ticket Panel!** \n ```Bringing you the best ticket experience possible, pick from the below drop down which type of ticket you would like to open and a member of the team will respond! ``` "
+  PanelImage: "https://cdn.discordapp.com/attachments/1258381536210849793/1259867891273302096/inosdifsacente.png?ex=668d3ee8&is=668bed68&hm=4c5dd89794437d6293fd0098199807cfcb6f846420ac21114bcb129307d7bf43&" # Recommended Size: 450x103, you can also use the default one, Leave blank for none
+  PanelThumbnail: "https://cdn.discordapp.com/attachments/1258381536210849793/1259867891273302096/inosdifsacente.png?ex=668d3ee8&is=668bed68&hm=4c5dd89794437d6293fd0098199807cfcb6f846420ac21114bcb129307d7bf43&" # Panel thumbnail image link, leave blank for none
+  FooterTimestamp: true # Enable timestamp when you created the panel in the footer?
+  FooterMsg: "Powered By Seleçāo Devs" # Footer message, leave blank for none
+  FooterIcon: "https://cdn.discordapp.com/attachments/1258381536210849793/1259867891273302096/inosdifsacente.png?ex=668d3ee8&is=668bed68&hm=4c5dd89794437d6293fd0098199807cfcb6f846420ac21114bcb129307d7bf43&" # The image in the footer, only works if FooterMsg or Timestamp is specified, leave blank for none
+  EmbedColor: "#2f3135" # Hex embed color, If this is blank it will use the default embed color you specified
+
+TicketSettings:
+  LogsChannelID: "1259425672846114856" # Default channel for all logs
+  BlacklistedRoles: [""] # Users with these roles can't open tickets, You can add multiple
+  MentionAuthor: true # Mention ticket creator in new tickets?
+  MaxTickets: 1 # The max amount of tickets a user can have open at 1 time
+  DeleteTime: 5 # Amount of time before a ticket gets deleted in seconds (after close/delete button has been pressed)
+  RestrictTicketClose: false # Only allow users with support roles to close tickets?
+  TicketCooldown: 0 # Add a cooldown for creating new tickets to prevent spam/abuse? (Time in seconds, set to 0 to disable)
+  SelectMenu: true # Use a dropdown menu for creating tickets instead of buttons?
+  DeleteCommandTranscript: true # Should the delete command save ticket transcripts?
+  ChannelTopic: "Creator: {user-tag} | Category: {category}" # The channel topic for all tickets, Variables: {username}, {user-tag}, {category}
+  TicketCloseReason: false # Require a reason for closing tickets?
+
+TicketTranscriptSettings:
+  TranscriptType: "HTML" # You can choose between "HTML" and "TXT"
+  SaveInFolder: true # Save all transcripts in a "transcripts" folder?
+  SaveImages: true # Download and save all images in transcripts? (Only works with HTML) This will increase the file size
+  MessagesRequirement: 1 # The amount of messages that has to be in a ticket for a transcript to be generated and saved
+
+ClaimingSystem:
+  Enabled: false # Enable ticket claiming system?
+  UserPerms: # The channel permissions for all the users when a ticket gets claimed, except the user who claimed the ticket and ticket creator
+    ViewChannel: true
+    SendMessages: false
+
+ArchiveTickets:
+  Enabled: false # If this is enabled, tickets won't get deleted instantly when the close button gets pressed, users will be able to re-open, create transcripts and delete it.
+  TranscriptChannelID: "1170662155436179456" # The channel where manually saved transcripts will be sent to
+  ViewClosedTicket: true # Should the ticket creator still be able to view the ticket but not send any messages when it's closed? They will only be able to re-open it.
+  RenameClosedTicket: true # Should closed tickets be renamed to "closed-user"?
+  TicketOpenLimit: false # Should archived tickets count towards the max tickets open limit?
+
+TicketAlert: # This configures the alert command, If the alert command is used in a ticket, the bot pings the ticket creator and notifies them that their ticket will be closed in the specified time unless they respond
+  Enabled: true
+  Time: "4" # Time in hours, 1-24 hours only
+  Title: "Ticket Closure Warning"
+  Message: "<:alert:1259431894236266546> **This ticket will be closed in** ``{time} hours`` **if no response has been received!**" # Use {time} for the time
+
+# ===========================================================================
+# TICKET LOGS CONFIGURATION
+# ===========================================================================
+
+userAdd:
+  Enabled: true # Enable or disable these logs
+  ChannelID: "1259432099866476595" # The channel these logs will be sent to, Leave blank to use the one you specified in TicketSettings
+
+userRemove:
+  Enabled: false # Enable or disable these logs
+  ChannelID: "" # The channel these logs will be sent to, Leave blank to use the one you specified in TicketSettings
+
+renameTicket:
+  Enabled: false # Enable or disable these logs
+  ChannelID: "" # The channel these logs will be sent to, Leave blank to use the one you specified in TicketSettings
+
+ticketClose:
+  Enabled: true # Enable or disable these logs
+  ChannelID: "1259432238173655150" # The channel these logs will be sent to, Leave blank to use the one you specified in TicketSettings
+
+paypalInvoice:
+  Enabled: false # Enable or disable these logs
+  ChannelID: "" # The channel these logs will be sent to, Leave blank to use the one you specified in TicketSettings
+
+cryptoPayments:
+  Enabled: false # Enable or disable these logs
+  ChannelID: "" # The channel these logs will be sent to, Leave blank to use the one you specified in TicketSettings
+
+stripeInvoice:
+  Enabled: false # Enable or disable these logs
+  ChannelID: "" # The channel these logs will be sent to, Leave blank to use the one you specified in TicketSettings
+
+claimTicket:
+  Enabled: true # Enable or disable these logs
+  ChannelID: "1259432295664980008" # The channel these logs will be sent to, Leave blank to use the one you specified in TicketSettings
+
+unclaimTicket:
+  Enabled: false # Enable or disable these logs
+  ChannelID: "" # The channel these logs will be sent to, Leave blank to use the one you specified in TicketSettings
+
+deleteTicket:
+  Enabled: true # Enable or disable these logs
+  ChannelID: "1259432337704353843" # The channel these logs will be sent to, Leave blank to use the one you specified in TicketSettings
+
+# ===========================================================================
+# TICKET CATEGORIES/BUTTONS
+# ===========================================================================
+# If you delete any of the buttons below the panel command will not work, please set Enabled to false if you want to disable them instead.
+# Make sure the bot's role is above all the support roles or it won't work!
+
+# This is the embed that gets sent to the ticket when it gets created
+TicketOpenEmbed:
+  EmbedColor: "" # Hex embed color, If this is blank it will use the default embed color you specified
+  FooterMsg: "" # Footer message, leave blank for none
+  FooterIcon: "" # The image in the footer, only works if FooterMsg is specified, leave blank for none
+  Timestamp: true # Enable footer timestamp?
+  UserIconThumbnail: true # Enable user avatar in the thumbnail?
+  UserIconAuthor: true # Enable user avatar in Author section?
+
+# Button 1 settato
+TicketButton1: # You can't disable the first button!
+  TicketName: "Support" # This will be the button and ticket name/category
+  Description: "Request support here" # Category description, This only works if SelectMenu is enabled, Leave blank to disable
+  TicketCategoryID: "1259432882464620604" # Channel Category ID
+  ClosedCategoryID: "" # The category the ticket will be moved to when it gets closed, leave blank to use the current category (only works if ArchiveTickets is enabled)
+  TicketMessageTitle: "Support Ticket" # Use {category} to get the category name for the ticket opened
+  TicketMessage: "<:staff:1259433370954502155> Welcome {user} to your support ticket. \n Please explain your question or problem and wait for a reply." # Use {user} to get the user that created the ticket
+  ButtonEmoji: "<:staff:1259433370954502155>" # Leave blank for no emoji
+  ButtonColor: "Gray" # Blurple, Gray, Green, Red
+  SupportRoles: ["1259433637623890052"] # Users with these roles can view tickets in this category, You can add multiple roles
+  MentionSupportRoles: true # Mention all the Support Roles in new tickets?
+  ChannelName: "「🚨」ticket-support" # Variables: {total-tickets}, {username}, {user-tag}, {user-id}
+
+# Button 2 settato
+TicketButton2:
+  Enabled: true # Enable 2nd category?
+  TicketName: "Nitro Ticket" # This will be the button and ticket name/category
+  Description: "Purchase Nitros & Boosts" # Category description, This only works if SelectMenu is enabled, Leave blank to disable
+  TicketCategoryID: "1259434484005343272" # Channel Category ID
+  ClosedCategoryID: "" # The category the ticket will be moved to when it gets closed, leave blank to use the current category (only works if ArchiveTickets is enabled)
+  TicketMessageTitle: "Ticket Services" # Use {category} to get the category name for the ticket opened
+  TicketMessage: "<:cart:1259434908804452352> Welcome to your nitro ticket {user}. \n Please list what you need and wait for a <#1258426013147467806>" # Use {user} to get the user that created the ticket
+  ButtonEmoji: "<:cart:1259434908804452352>" # Leave blank for no emoji
+  ButtonColor: "Gray" # Blurple, Gray, Green, Red
+  SupportRoles: ["1258426013147467806"] # Users with these roles can view tickets in this category, You can add multiple roles
+  MentionSupportRoles: true # Mention all the Support Roles in new tickets?
+  ChannelName: "「🔮」ticket-nitro" # Variables: {total-tickets}, {username}, {user-tag}, {user-id}
+
+# Button 3 settato
+TicketButton3:
+  Enabled: true # Enable 3rd category?
+  TicketName: "Fortnite Accounts Ticket" # This will be the button and ticket name/category
+  Description: "Purchase Fortnite Accounts" # Category description, This only works if SelectMenu is enabled, Leave blank to disable
+  TicketCategoryID: "1259436135718060053" # Channel Category ID
+  ClosedCategoryID: "" # The category the ticket will be moved to when it gets closed, leave blank to use the current category (only works if ArchiveTickets is enabled)
+  TicketMessageTitle: "Fortnite Accounts" # Use {category} to get the category name for the ticket opened
+  TicketMessage: "<:fortnite:1259435811049443399> Welcome to your fortnite accounts ticket {user}. \n Please list what you need and wait for a <#1258195098051678410>" # Use {user} to get the user that created the ticket
+  ButtonEmoji: "<:fortnite:1259435811049443399>" # Leave blank for no emoji
+  ButtonColor: "Gray" # Blurple, Gray, Green, Red
+  SupportRoles: ["1258195098051678410"] # Users with these roles can view tickets in this category, You can add multiple roles
+  MentionSupportRoles: true # Mention all the Support Roles in new tickets?
+  ChannelName: "「🌀」ticket-fortnite" # Variables: {total-tickets}, {username}, {user-tag}, {user-id}
+
+# Button 4 settato
+TicketButton4:
+  Enabled: true # Enable 4th category?
+  TicketName: "Ticket Cheat" # This will be the button and ticket name/category
+  Description: "Purchase Cheats Here" # Category description, This only works if SelectMenu is enabled, Leave blank to disable
+  TicketCategoryID: "1259436960993247315" # Channel Category ID
+  ClosedCategoryID: "" # The category the ticket will be moved to when it gets closed, leave blank to use the current category (only works if ArchiveTickets is enabled)
+  TicketMessageTitle: "Cheat Ticket" # Use {category} to get the category name for the ticket opened
+  TicketMessage: "<:cheat:1259437831714111508> Welcome to your cheat ticket {user} \n Please list what you need and wait for a <#1258426880139333783>" # Use {user} to get the user that created the ticket
+  ButtonEmoji: "<:cheat:1259437831714111508> " # Leave blank for no emoji
+  ButtonColor: "Gray" # Blurple, Gray, Green, Red
+  SupportRoles: ["1258433223789383790"] # Users with these roles can view tickets in this category, You can add multiple roles
+  MentionSupportRoles: false # Mention all the Support Roles in new tickets?
+  ChannelName: "「👻」ticket-cheat" # Variables: {total-tickets}, {username}, {user-tag}, {user-id}
+
+# Button 5 settato
+TicketButton5:
+  Enabled: true  # Enable 5th category?
+  TicketName: "Social Accounts" # This will be the button and ticket name/category
+  Description: "Purchase Accounts here" # Category description, This only works if SelectMenu is enabled, Leave blank to disable
+  TicketCategoryID: "1259438402340786206" # Channel Category ID
+  ClosedCategoryID: "" # The category the ticket will be moved to when it gets closed, leave blank to use the current category (only works if ArchiveTickets is enabled)
+  TicketMessageTitle: "({category})" # Use {category} to get the category name for the ticket opened
+  TicketMessage: "<:account:1259438695933677658> Welcome to your accounts ticket {user}! \n>  Please list what you need and wait for a <#1258426508322537574>" # Use {user} to get the user that created the ticket
+  ButtonEmoji: "<:account:1259438695933677658> " # Leave blank for no emoji
+  ButtonColor: "Gray" # Blurple, Gray, Green, Red
+  SupportRoles: ["1258426508322537574"] # Users with these roles can view tickets in this category, You can add multiple roles
+  MentionSupportRoles: false # Mention all the Support Roles in new tickets?
+  ChannelName: "「🍀」ticket-accounts" # Variables: {total-tickets}, {username}, {user-tag}, {user-id}
+
+
+# (!) IMPORTANT: The categories below will only work if SelectMenu is enabled (Dropdown menu for selecting a ticket category)
+# (!) IMPORTANT: The categories below will only work if SelectMenu is enabled (Dropdown menu for selecting a ticket category)
+# (!) IMPORTANT: The categories below will only work if SelectMenu is enabled (Dropdown menu for selecting a ticket category)
+
+# Button 6 settato
+TicketButton6:
+  Enabled: true # Enable 6th category?
+  TicketName: "Partner" # This will be the button and ticket name/category
+  Description: "Do a partnership here." # Category description, This only works if SelectMenu is enabled, Leave blank to disable
+  TicketCategoryID: "1259439119860367491" # Channel Category ID
+  ClosedCategoryID: "" # The category the ticket will be moved to when it gets closed, leave blank to use the current category (only works if ArchiveTickets is enabled)
+  TicketMessageTitle: "({category})" # Use {category} to get the category name for the ticket opened
+  TicketMessage: "<:partner:1259439291675840514> We are glad you want to partner with us! \n> Compile this module to partner with us:\n- Server Link:\n- Members\n- Talk About Your Server:\n" # Use {user} to get the user that created the ticket
+  ButtonEmoji: "<:partner:1259439291675840514> " # Leave blank for no emoji
+  ButtonColor: "Gray" # Blurple, Gray, Green, Red
+  SupportRoles: ["1259439399243092079"] # Users with these roles can view tickets in this category, You can add multiple roles
+  MentionSupportRoles: true # Mention all the Support Roles in new tickets?
+  ChannelName: "「🤝」ticket-partner" # Variables: {total-tickets}, {username}, {user-tag}, {user-id}
+
+# Button 7 settao
+TicketButton7:
+  Enabled: true # Enable 7th category?
+  TicketName: "VFX/GFX" # This will be the button and ticket name/category
+  Description: "Buy a GFX/VFX here." # Category description, This only works if SelectMenu is enabled, Leave blank to disable
+  TicketCategoryID: "1259624212755124334" # Channel Category ID
+  ClosedCategoryID: "" # The category the ticket will be moved to when it gets closed, leave blank to use the current category (only works if ArchiveTickets is enabled)
+  TicketMessageTitle: "({category})" # Use {category} to get the category name for the ticket opened
+  TicketMessage: "<:developer:1259624635662602260> We are glad you are interesting in purchasing our tools! \n> Please confirm which type of Tool you would like to purchase." # Use {user} to get the user that created the ticket
+  ButtonEmoji: "<:developer:1259624635662602260>" # Leave blank for no emoji
+  ButtonColor: "Gray" # Blurple, Gray, Green, Red
+  SupportRoles: ["1258426880139333783"] # Users with these roles can view tickets in this category, You can add multiple roles
+  MentionSupportRoles: true # Mention all the Support Roles in new tickets?
+  ChannelName: "「💻」ticket-tools" # Variables: {total-tickets}, {username}, {user-tag}, {user-id}
+
+# Button 8
+TicketButton8:
+  Enabled: true # Enable 8th category?
+  TicketName: "Exchange" # This will be the button and ticket name/category
+  Description: "Make a value exchange here." # Category description, This only works if SelectMenu is enabled, Leave blank to disable
+  TicketCategoryID: "1259868272329756765" # Channel Category ID
+  ClosedCategoryID: "" # The category the ticket will be moved to when it gets closed, leave blank to use the current category (only works if ArchiveTickets is enabled)
+  TicketMessageTitle: "({category})" # Use {category} to get the category name for the ticket opened
+  TicketMessage: "> We are glad you are interesting in exchanging here! \n> Tell us what value you want to exchange and wait for an Exchanger." # Use {user} to get the user that created the ticket
+  ButtonEmoji: "" # Leave blank for no emoji
+  ButtonColor: "Gray" # Blurple, Gray, Green, Red
+  SupportRoles: ["1259868447333027931"] # Users with these roles can view tickets in this category, You can add multiple roles
+  MentionSupportRoles: true # Mention all the Support Roles in new tickets?
+  ChannelName: "「💱」ticket-exchange" # Variables: {total-tickets}, {username}, {user-tag}, {user-id}
+
+# ===========================================================================
+# TICKET REVIEW SYSTEM AND USER CLOSE DM
+# ===========================================================================
+TicketUserCloseDM:
+  Enabled: true # Send a message to the user that created the ticket when it gets closed?
+  SendTranscript: true # Send ticket transcript with the message?
+  TicketInformation: true # Add ticket information to the embed? (total messages in ticket, claimed by, category, etc..)
+  CloseEmbedMsg: "> Your ticket has been closed in **{guildName}** Thanks for choosing us!" # Use {guildName} for your server's name
+
+TicketReviewSettings:
+  Enabled: true # Enable ticket review system? (This sends a message to the user when their ticket closes with the option to rate it 1-5 stars)
+  AskWhyModal: true # Ask users to explain why they are giving their review?
+  ReviewChannelID: "1170668007509463061" # The channel all reviews should be sent to, Only works if AskWhyModal is set to true, leave blank for none
+  CloseEmbedReviewMsg: "> Leave a review regarding your closed ticket **{guildName}**\n>  Click on the button below and choose the stars to give based on the service received!\n\n <:events:1161033364044795975> We remind you that your opinion is very important to us." # Use {guildName} for your server's name
+  ReviewMsg: "Thank you for leaving a review!"
+  MinimumWords: 2
+  MaximumWords: 250 # It's recommended to leave this below 250
+
+TicketReviewRequirements:
+  Enabled: false # Enable requirements to review a ticket to prevent abuse/spam?
+  TotalMessages: 5 # The amount of messages that has to be in the ticket for the user to be able to review it
+
+# ===========================================================================
+# PAYPAL INVOICES
+# ===========================================================================
+PayPalSettings:
+  Enabled: false # Enable paypal invoices command?
+  PayPalSecretKey: "Adm5vhzsQAaQtUX8C0jieGUf3I8XSgUjcVUZeMrD5vQXkmphHLVVL9lagivtR2yQx0G95Q9cWEG3ctUt" # PayPal Live API Secret Key
+  PayPalClientID: "EO6tUxGGdFhwTgYNDcNx4Q7o83RfmOC1AKRY3CWevOM66oyJv9JitSt5NQUyPSWIbTBZQFQcHNju6DLs" # PayPal Live API Client ID
+  AllowedRoles: ["1160599105219866794"] # Users with these roles can use the paypal command, You can add multiple roles
+  Email: "aaron.simoens2008@gmail.com" # The PayPal email that should receive all payments
+  Currency: "EUR"
+  CurrencySymbol: "€"
+  OnlyInTicketChannels: true # Only allow this command in ticket channels?
+
+# ===========================================================================
+# STRIPE INVOICES
+# ===========================================================================
+StripeSettings:
+  Enabled: false # Enable stripe invoices command?
+  StripeSecretKey: "SECRET_KEY"
+  AllowedRoles: ["1088504542301261834"] # Users with these roles can use the paypal command, You can add multiple roles
+  Currency: "USD"
+  CurrencySymbol: "$"
+  OnlyInTicketChannels: false # Only allow this command in ticket channels?
+
+# ===========================================================================
+# CRYPTO PAYMENTS
+# ===========================================================================
+CryptoSettings:
+  Enabled: false # Enable crypto command?
+  AllowedRoles: ["1160599105219866794"] # Users with these roles can use the paypal command, You can add multiple roles
+  Currency: "EUR" # Currency to convert to crypto
+  CurrencySymbol: "€"
+  OnlyInTicketChannels: false # Only allow this command in ticket channels?
+
+CryptoAddresses:
+ LTC: "LUv5WYbYKvCd9GWrXpTTezNL4hjSEGq6Tz"
+
+# ===========================================================================
+# SUGGESTION SYSTEM
+# ===========================================================================
+SuggestionSettings:
+  Enabled: false # Enable suggestion system?
+  ChannelID: "1090663082600173618" # The channel where all the suggestions will be posted
+  EnableAcceptDenySystem: true # Enable the accept and deny system for suggestions? (if this is disabled, the accept, deny buttons and status will automatically be removed)
+  RemoveAllButtonsIfAcceptedOrDenied: true # Remove all buttons from a suggestion if it was accepted or denied?
+  AllowedRoles: ["1088500400853880872"] # Users with these roles can accept and deny suggestions, You can add multiple roles
+  LogsChannel: "CHANNEL_ID" # The channel where all upvote/downvote/accept/deny user logs will be sent to, Leave blank to disable
+
+SuggestionStatuses:
+  Pending: "🟠 Pending"
+  Accepted: "🟢 Accepted"
+  Denied: "🔴 Denied"
+
+SuggestionStatusesEmbedColors:
+  Pending: "#E67E22" # The color to set the embed color to when the suggestion is pending (hex color)
+  Accepted: "#2ECC71" # The color to set the embed color to when the suggestion is accepted (hex color)
+  Denied: "#E74C3C" # The color to set the embed color to when the suggestion is denied (hex color)
+
+SuggestionUpvote:
+  ButtonName: "Upvote"
+  ButtonEmoji: "⬆️"
+  ButtonColor: "Gray" # Blurple, Gray, Green, Red
+
+SuggestionDownvote:
+  ButtonName: "Downvote"
+  ButtonEmoji: "⬇️"
+  ButtonColor: "Gray" # Blurple, Gray, Green, Red
+
+SuggestionResetvote:
+  ButtonName: "Reset Vote"
+  ButtonEmoji: "🗑️"
+  ButtonColor: "Gray" # Blurple, Gray, Green, Red
+
+SuggestionAccept:
+  ButtonName: "Accept"
+  ButtonEmoji: "🟢"
+  ButtonColor: "Blurple" # Blurple, Gray, Green, Red
+
+SuggestionDeny:
+  ButtonName: "Deny"
+  ButtonEmoji: "🔴"
+  ButtonColor: "Blurple" # Blurple, Gray, Green, Red
+
+# ===========================================================================
+# CUSTOM COMMANDS
+# ===========================================================================
+CommandsEnabled: true
+OnlyInTickets: true # Should you only be able to use the commands in tickets?
+CommandsPrefix: "." # The prefix for custom commands
+
+CustomCommands: # You can add unlimited commands!
+  - command: "pp"
+    response: "<:paypal:1259625026630713364> **Geppetto PayPal** \n\n **Link:** https://paypal.me/zagomax76 \n **Email:** zagomax76@gmail.com \n\n <:paypal:1259625026630713364> **Send Money** \n<:checkgra:1259621332690407506> **Send Screenshot after payment** \n <:cart:1259434908804452352> **Wait the product**"
+    Embed: false # Use an embed instead of a normal message?
+    deleteMsg: true # Delete the message author's message when using this command? (It's recommended to leave this false if replyToUser is set to true)
+    replyToUser: false # Reply to the user with the response that sent the command?
+
+  - command: "ltc"
+    response: "<:ltc:1259625374094987426> **Geppetto LTC Addy** \n\n **Addy:** La3HfNGaMge3CxRnpUiZnvgxSbeYKEUtqG \n\n <:ltc:1259625374094987426> **Send Money** \n <:checkgra:1259621332690407506> **Send Screenshot after paymenth** \n <:cart:1259434908804452352> **Wait the product**"
+    Embed: false # Use an embed instead of a normal message?
+    deleteMsg: true # Delete the message author's message when using this command? (It's recommended to leave this false if replyToUser is set to true)
+    replyToUser: false # Reply to the user with the response that sent the command?
+
+  - command: "done"
+    response: "**Product got dropped. Please check your dms and then vouch in right format!** <#1254026091220303953>"
+    Embed: true # Use an embed instead of a normal message?
+    deleteMsg: true # Delete the message author's message when using this command? (It's recommended to leave this false if replyToUser is set to true)
+    replyToUser: false # Reply to the user with the response that sent the command?
+
+# ===========================================================================
+# AUTO RESPONSE
+# ===========================================================================
+AutoResponse:
+  Enabled: false
+  OnlyInTickets: false # Only enable auto respones in tickets?
+  MessageType: "EMBED" # You can choose between "EMBED" and "TEXT"
+  Responses: # Initiator Message - Response Message, (You can add unlimited responses)
+    "Server IP": "The server IP is 123.123.123.123"
+    "Test": "This is a test!"
+
+# ===========================================================================
+# CHANNEL STATS CONFIGURATION 
+# ===========================================================================
+# All of these channels will automatically updated every 5 minutes
+
+TotalTickets:
+  Enabled: false
+  ChannelID: "1090663733858144388" # Voice channel ID
+  ChannelName: "📩 Total Tickets: {total-tickets}" # Variables: {total-tickets}
+
+OpenTickets:
+  Enabled: false
+  ChannelID: "CHANNEL_ID" # Voice channel ID
+  ChannelName: "Open Tickets: {open-tickets}" # Variables: {open-tickets}
+
+AverageRating:
+  Enabled: false
+  ChannelID: "CHANNEL_ID" # Voice channel ID
+  ChannelName: "Rating: ⭐{average-rating}/5.0" # Variables: {average-rating}
+
+# ===========================================================================
+# LOCALE
+# ===========================================================================
+Locale:
+  NoPermsMessage: "<:cross:1259621756256256121> You don't have permissions to use this command!" 
+  RoleBlacklistedTitle: "<:cross:1259621756256256121> You're Blacklisted"
+  RoleBlacklistedMsg: "<:cross:1259621756256256121> Your role is blacklisted from creating tickets!"
+  AlreadyOpenTitle: "<:cross:1259621756256256121> Ticket Already Open"
+  AlreadyOpenMsg: "Unable to open tickets, the maximum number of open tickets is 1 at a time" # Use {max} for the max amount of tickets a user is allowed to have open at the same time
+  CloseTicketButton: "Close Ticket"
+  ticketCreatedTitle: "<:checkgra:1259621332690407506> Ticket created successfully"
+  ticketCreatedMsg : "Your ticket has been created in"
+  deletingTicketMsg: "Deleting ticket in {time} seconds" # Use {time} for the amount of time before a ticket gets deleted
+  confirmCloseTitle: "Closing Support Ticket"
+  confirmCloseMsg: "{user} has begun to close the ticket, Are you sure you want to close the ticket?" # Use {user} for @Example and {user-tag} for Example, User# %%__USER__%%
+  confirmCloseButton: "Confirm"
+  cancelCloseButton: "Cancel"
+  PayPalInvoiceTitle: "PayPal Invoice"
+  PayPalInvoiceMsg: "Please click the button below to pay!"
+  PayPalSeller: "Seller:"
+  PayPalUser: "User:"
+  PayPalPrice: "Price:"
+  PayPalService: "Service:"
+  PayPalPayInvoice: "Pay Invoice"
+  PayPalLogTitle: "Ticket Logs | PayPal Invoice"
+  NotInTicketChannel: "You're not in a ticket channel!"
+  MentionUser: "Please mention a user to add!"
+  ticketUserAdd: "Added **{user} ({user-tag})** to the ticket." # Use {user} for @Example and {user-tag} for Example#0000
+  ticketUserRemove: "Removed **{user} ({user-tag})** from the ticket." # Use {user} for @Example and {user-tag} for Example#0000
+  ticketChannelTopic: "Creator: {creator} | Type: {ticketType}" # Use {creator} for ticket creator and {ticketType} for the ticket type/category
+  ticketRenameSpecifyName: "Please specify a name!"
+  ticketRenamed: "This ticket has been renamed to **{newName}**!" # Use {newName} for the new ticket name
+  userAddTitle: "Ticket Logs | User Added"
+  userRemoveTitle: "Ticket Logs | User Removed"
+  ticketCloseTitle: "Ticket Logs | Ticket Closed"
+  ticketRenameTitle: "Ticket Logs | Ticket Renamed"
+  ticketDeletedTitle: "Ticket Logs | Ticket Deleted"
+  logsExecutor: "Executor"
+  logsTicket: "Ticket"
+  logsUser: "User"
+  logsTicketType: "Ticket Type"
+  logsTicketAuthor: "Ticket Creator"
+  logsClosedBy: "Closed by"
+  logsDeletedBy: "Deleted by"
+  restrictTicketClose: "You are not allowed to close this ticket!"
+  ticketPinned: "📌 This ticket has been pinned!"
+  ticketAlreadyPinned: "This ticket is already pinned!"
+  suggestionSubmit: "Your suggestion has been submitted, Thank you!"
+  suggestionTitle: "Suggestion"
+  suggestionStatsTitle: "Suggestions"
+  suggestionsTotal: "Total Suggestions:"
+  suggestionsTotalUpvotes: "Total Upvotes:"
+  suggestionsTotalDownvotes: "Total Downvotes:"
+  suggestionInformation: "Information"
+  suggestionUpvotes: "Upvotes:"
+  suggestionDownvotes: "Downvotes:"
+  suggestionFrom: "From:"
+  suggestionStatus: "Status:"
+  newSuggestionTitle: "💡 New Suggestion"
+  suggestionVoteResetTitle: "Vote Reset"
+  suggestionVoteReset: "Your vote on [this]({link}) suggestion has been reset!" # Use {link} for the suggestion message link
+  suggestionNoVoteTitle: "No Vote"
+  suggestionNoVote: "You haven't voted for [this]({link}) suggestion!" # Use {link} for the suggestion message link
+  suggestionDownvotedTitle: "Suggestion Downvoted"
+  suggestionDownvoted: "You successfully downvoted [this]({link}) suggestion!" # Use {link} for the suggestion message link
+  suggestionAlreadyVotedTitle: "Already Voted"
+  suggestionAlreadyVoted: "You have already voted on [this]({link}) suggestion! You can press the Reset Vote button to change your vote." # Use {link} for the suggestion message link
+  suggestionUpvotedTitle: "Suggestion Upvoted"
+  suggestionUpvoted: "You successfully upvoted [this]({link}) suggestion!" # Use {link} for the suggestion message link
+  suggestionAcceptedTitle: "Suggestion Accepted"
+  suggestionAccepted: "You successfully accepted [this]({link}) suggestion!" # Use {link} for the suggestion message link
+  suggestionDeniedTitle: "Suggestion Denied"
+  suggestionDenied: "You successfully denied [this]({link}) suggestion!" # Use {link} for the suggestion message link
+  suggestionNoPerms: "You are not allowed to accept or deny suggestions!"
+  suggestionCantVoteTitle: "Can't vote"
+  suggestionCantVote: "You can't vote for [this]({link}) suggestion because it has already been accepted or denied!" # Use {link} for the suggestion message link
+  cryptoTitle: "Crypto Payment"
+  cryptoMessage: "Scan the QR Code below or pay to the below address with the exact amount"
+  cryptoLogTitle: "Ticket Logs | Crypto Payment"
+  cryptoLogAddress: "Address"
+  restrictTicketClaim: "You are not allowed to claim this ticket!"
+  claimTicketButton: "Claim"
+  unclaimTicketButton: "Unclaim"
+  ticketClaimedBy: "Claimed by"
+  ticketUnClaimedBy: "Unclaimed by"
+  ticketClaimedTitle: "Ticket Claimed"
+  ticketUnClaimedTitle: "Ticket Unclaimed"
+  ticketNotClaimed: "This ticket has not been claimed!"
+  ticketClaimed: "This ticket has been claimed by {user}\nThey will be assisting you shortly!" # Use {user} for the user that claimed the ticket
+  ticketUnClaimed: "This ticket has been unclaimed by {user}" # Use {user} for the user that claimed the ticket
+  ticketDidntClaim: "You did not claim this ticket, Only the user that claimed this ticket can unclaim it! ({user})" # Use {user} for the user that claimed the ticket
+  ticketClaimedLog: "Ticket Logs | Ticket Claimed"
+  ticketUnClaimedLog: "Ticket Logs | Ticket Unclaimed"
+  ticketClosureCancel: "Cancelled ticket closure!"
+  claimTicketMsg: "You successfully claimed this ticket!"
+  unclaimTicketMsg: "You successfully unclaimed this ticket!"
+  totalMessagesLog: "Total Messages:"
+  totalTickets: "Total Tickets:"
+  openTickets: "Open Tickets:"
+  totalClaims: "Total Claims:"
+  guildStatistics: "Guild Statistics"
+  statsTickets: "Tickets"
+  alreadyBlacklisted: "{user} is already blacklisted!" # Use {user} for @Example and {user-tag} for Example#0000
+  successfullyBlacklisted: "{user} has been successfully **blacklisted** from creating tickets!" # Use {user} for @Example and {user-tag} for Example#0000
+  notBlacklisted: "{user} is not blacklisted!" # Use {user} for @Example and {user-tag} for Example#0000
+  successfullyUnblacklisted: "{user} has been successfully **unblacklisted** from creating tickets!" # Use {user} for @Example and {user-tag} for Example#0000
+  userBlacklistedTitle: "Blacklisted"
+  userBlacklistedMsg: "You are blacklisted from creating tickets!"
+  ticketInformationCloseDM: "Ticket Information"
+  categoryCloseDM: "Category:"
+  claimedByCloseDM: "Claimed by:"
+  ticketClosedCloseDM: "Ticket Closed"
+  notClaimedCloseDM: "Not claimed"
+  ticketRating: "Ticket Rating"
+  totalReviews: "Total Reviews:"
+  averageRating: "Average Rating:"
+  cooldownEmbedMsgTitle: "Cooldown"
+  cooldownEmbedMsg: "You have to wait `{time}` before creating another ticket!"
+  selectCategory: "Select a category..."
+  selectReview: "Select a review..."
+  explainWhyRating: "Please explain why you are giving this rating"
+  ratingsStats: "Reviews"
+  cryptoQRCode: "QR Code"
+  userLeftTitle: "User Left"
+  userLeftDescription: "The user that created this ticket has left the server **({user-tag})**" # Use {user-tag} for Example#0000
+  reOpenButton: "Re-Open"
+  transcriptButton: "Transcript"
+  deleteTicketButton: "Delete"
+  ticketClosedBy: "This ticket was closed by {user} ({user-tag})" # Use {user} for @Example and {user-tag} for Example#0000
+  ticketReOpenedBy: "This ticket has been re-opened by {user} ({user-tag})" # Use {user} for @Example and {user-tag} for Example#0000
+  ticketTranscriptCategory: "Category"
+  ticketTranscript: "Ticket Transcript"
+  ticketName: "Ticket Name"
+  transcriptSaved: "Transcript saved to {channel}" # Use {channel} for the channel the transcript was saved to
+  transcriptSavedBy: "Saved by {user}" # Use {user} for the user that saved the transcript
+  notAllowedTranscript: "You are not allowed to create a transcript!"
+  notAllowedDelete: "You are not allowed to delete this ticket!"
+  newTicketReview: "New Ticket Review"
+  ticketReview: "Review"
+  StripeInvoiceTitle: "Stripe Invoice"
+  StripeLogTitle: "Ticket Logs | Stripe Invoice"
+  ticketForceDeleted: "Ticket Force Deleted"
+  whyCloseTicket: "Why are you closing this ticket?"
+  ticketCloseReasonTitle: "Ticket Close Reason"
+  reason: "Reason"
+  ticketClosedByReason: "This ticket was closed by {user} ({user-tag})\n\n**Reason:**\n{reason}" # Use {user} for @Example and {user-tag} for Example#0000, Use {reason} for the close reason
+  successReason: "Successfully set reason for ticket closure!"
+  
+# ===========================================================================
+# HELP COMMAND
+# ===========================================================================
+HelpCommand:
+  EmbedColor: "" # Hex color, Leave blank to use the default one
+  FooterTimestamp: true # Enable timestamp when the message was sent in the footer?
+  GuildIcon: true # Display the server's icon as embed thumbnail?
+  Title: "{botName}'s Commands List" # Use {botName} for the bot's name, (This is the name you specified at the top of the config)
+  generalCategory: "👤 | General — {cmdCount}" # Use {cmdCount} for the total amount of commands in this category
+  ticketCategory: "🎫 | Ticket — {cmdCount}" # Use {cmdCount} for the total amount of commands in this category
+  utilityCategory: "🛠️ | Utility — {cmdCount}" # Use {cmdCount} for the total amount of commands in this category
+  FooterMsg: "{guildName}" # You can use {guildName} and {userTag}
+
+# ===========================================================================
+# BUTTON CUSTOMIZATION
+# ===========================================================================
+ButtonEmojis:
+  deleteTicket: "⛔"
+  reOpenTicket: "🔓"
+  createTranscript: "📜"
+  closeTicket: "🔒"
+  ticketCreated: "🎫"
+  ticketClaim: "👋"
+
+# Valid colors:
+# Primary = blurple
+# Secondary = gray
+# Success = green
+# Danger = red
+
+ButtonColors:
+  deleteTicket: "Secondary"
+  reOpenTicket: "Secondary"
+  createTranscript: "Secondary"
+  closeTicket: "Danger"
+  ticketClaim: "Success"
+  ticketUnclaim: "Primary"
+  ticketConfirmClosure: "Success"
+  ticketCancelClosure: "Danger"
